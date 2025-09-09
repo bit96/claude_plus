@@ -6193,7 +6193,7 @@ router.put('/openai-accounts/:id/toggle', authenticateAdmin, async (req, res) =>
     account.enabled = !account.enabled
     account.updatedAt = new Date().toISOString()
 
-    // TODO: 更新方法
+    //  更新方法
     // await redis.updateOpenAiAccount(id, account)
 
     logger.success(
