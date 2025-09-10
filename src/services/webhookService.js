@@ -208,7 +208,7 @@ class WebhookService {
     // 使用通用格式
     const payload = {
       type,
-      service: 'claude-relay-service',
+      service: 'claude_plus',
       timestamp: getISOStringWithTimezone(new Date()),
       data
     }
@@ -251,7 +251,7 @@ class WebhookService {
       timeout,
       headers: {
         'Content-Type': 'application/json',
-        'User-Agent': 'claude-relay-service/2.0'
+        'User-Agent': 'claude_plus/2.0'
       }
     })
 

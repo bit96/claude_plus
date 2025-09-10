@@ -5,7 +5,7 @@ const fs = require('fs')
 const path = require('path')
 const process = require('process')
 
-const PID_FILE = path.join(__dirname, '..', 'claude-relay-service.pid')
+const PID_FILE = path.join(__dirname, '..', 'claude_plus.pid')
 const LOG_FILE = path.join(__dirname, '..', 'logs', 'service.log')
 const ERROR_LOG_FILE = path.join(__dirname, '..', 'logs', 'service-error.log')
 const APP_FILE = path.join(__dirname, '..', 'src', 'app.js')

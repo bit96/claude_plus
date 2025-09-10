@@ -6,8 +6,8 @@
 [![Node.js](https://img.shields.io/badge/Node.js-18+-green.svg)](https://nodejs.org/)
 [![Redis](https://img.shields.io/badge/Redis-6+-red.svg)](https://redis.io/)
 [![Docker](https://img.shields.io/badge/Docker-Ready-blue.svg)](https://www.docker.com/)
-[![Docker Build](https://github.com/Wei-Shaw/claude-relay-service/actions/workflows/auto-release-pipeline.yml/badge.svg)](https://github.com/Wei-Shaw/claude-relay-service/actions/workflows/auto-release-pipeline.yml)
-[![Docker Pulls](https://img.shields.io/docker/pulls/weishaw/claude-relay-service)](https://hub.docker.com/r/weishaw/claude-relay-service)
+[![Docker Build](https://github.com/bit96/claude_plus/actions/workflows/auto-release-pipeline.yml/badge.svg)](https://github.com/bit96/claude_plus/actions/workflows/auto-release-pipeline.yml)
+[![Docker Pulls](https://img.shields.io/docker/pulls/bit96/claude_plus)](https://hub.docker.com/r/bit96/claude_plus)
 
 **🔐 自行搭建Claude API中转服务，支持多账户管理**
 
@@ -135,7 +135,7 @@
 
 ```bash
 # 下载并运行管理脚本
-curl -fsSL https://raw.githubusercontent.com/Wei-Shaw/claude-relay-service/main/scripts/manage.sh -o manage.sh
+curl -fsSL https://raw.githubusercontent.com/bit96/claude_plus/main/scripts/manage.sh -o manage.sh
 chmod +x manage.sh
 ./manage.sh install
 
@@ -168,7 +168,7 @@ crs uninstall # 卸载服务
 $ crs install
 
 # 会依次询问：
-安装目录 (默认: ~/claude-relay-service):
+安装目录 (默认: ~/claude_plus):
 服务端口 (默认: 3000): 8080
 Redis 地址 (默认: localhost):
 Redis 端口 (默认: 6379):
@@ -225,8 +225,8 @@ sudo systemctl start redis
 
 ```bash
 # 下载项目
-git clone https://github.com/Wei-Shaw//claude-relay-service.git
-cd claude-relay-service
+git clone https://github.com/bit96/claude_plus.git
+cd claude_plus
 
 # 安装依赖
 npm install
@@ -304,7 +304,7 @@ npm run service:status
 
 ```bash
 # 拉取镜像（支持 amd64 和 arm64）
-docker pull weishaw/claude-relay-service:latest
+docker pull bit96/claude_plus:latest
 
 # 使用 docker-compose
 # 创建 .env 文件用于 docker-compose 的环境变量：
@@ -323,8 +323,8 @@ cat > docker-compose.yml << 'EOF'
 version: '3.8'
 services:
   claude-relay:
-    image: weishaw/claude-relay-service:latest
-    container_name: claude-relay-service
+    image: bit96/claude_plus:latest
+    container_name: claude_plus
     restart: unless-stopped
     ports:
       - "3000:3000"
@@ -385,7 +385,7 @@ docker-compose.yml 已包含：
 1. **查看容器日志**
 
    ```bash
-   docker logs claude-relay-service
+   docker logs claude_plus
    ```
 
 2. **查看挂载的文件**
@@ -413,7 +413,7 @@ docker-compose.yml 已包含：
 
 - 自动生成：查看 data/init.json
 - 环境变量预设：通过 ADMIN_USERNAME 和 ADMIN_PASSWORD 设置
-- Docker 部署：查看容器日志 `docker logs claude-relay-service`
+- Docker 部署：查看容器日志 `docker logs claude_plus`
 
 ### 2. 添加Claude账户
 
@@ -603,7 +603,7 @@ npm run service:stop
 
 ```bash
 # 1. 进入项目目录
-cd claude-relay-service
+cd claude_plus
 
 # 2. 拉取最新代码
 git pull origin main

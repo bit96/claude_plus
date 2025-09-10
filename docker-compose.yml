@@ -7,7 +7,7 @@ services:
   # 🚀 Claude Relay Service
   claude-relay:
     build: .
-    image: weishaw/claude-relay-service:latest
+    image: bit96/claude_plus:latest
     restart: unless-stopped
     ports:
       # 绑定地址：生产环境建议使用反向代理，设置 BIND_HOST=127.0.0.1
@@ -73,7 +73,7 @@ services:
     depends_on:
       - redis
     networks:
-      - claude-relay-network
+      - claude_plus_network
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
       interval: 30s
@@ -94,7 +94,7 @@ services:
       - ./redis_data:/data
     command: redis-server --save 60 1 --appendonly yes --appendfsync everysec
     networks:
-      - claude-relay-network
+      - claude_plus_network
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 30s
@@ -112,7 +112,7 @@ services:
     depends_on:
       - redis
     networks:
-      - claude-relay-network
+      - claude_plus_network
     profiles:
       - monitoring
 
@@ -132,7 +132,7 @@ services:
       - '--web.console.templates=/etc/prometheus/consoles'
       - '--web.enable-lifecycle'
     networks:
-      - claude-relay-network
+      - claude_plus_network
     profiles:
       - monitoring
 
@@ -150,7 +150,7 @@ services:
     depends_on:
       - prometheus
     networks:
-      - claude-relay-network
+      - claude_plus_network
     profiles:
       - monitoring
 
@@ -161,5 +161,5 @@ volumes:
     driver: local
 
 networks:
-  claude-relay-network:
+  claude_plus_network:
     driver: bridge

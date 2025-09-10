@@ -299,7 +299,7 @@ class Application {
 
           const health = {
             status: 'healthy',
-            service: 'claude-relay-service',
+            service: 'claude_plus',
             version,
             timestamp: new Date().toISOString(),
             uptime: process.uptime(),

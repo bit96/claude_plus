@@ -5281,7 +5281,7 @@ router.get('/check-updates', authenticateAdmin, async (req, res) => {
     }
 
     // 请求 GitHub API
-    const githubRepo = 'wei-shaw/claude-relay-service'
+    const githubRepo = 'bit96/claude_plus'
     const response = await axios.get(`https://api.github.com/repos/${githubRepo}/releases/latest`, {
       headers: {
         Accept: 'application/vnd.github.v3+json',

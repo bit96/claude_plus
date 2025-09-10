@@ -175,14 +175,14 @@ const createRotateTransport = (filename, level = null) => {
   return transport
 }
 
-const dailyRotateFileTransport = createRotateTransport('claude-relay-%DATE%.log')
-const errorFileTransport = createRotateTransport('claude-relay-error-%DATE%.log', 'error')
+const dailyRotateFileTransport = createRotateTransport('claude_plus-%DATE%.log')
+const errorFileTransport = createRotateTransport('claude_plus-error-%DATE%.log', 'error')
 
 // 🔒 创建专门的安全日志记录器
 const securityLogger = winston.createLogger({
   level: 'warn',
   format: logFormat,
-  transports: [createRotateTransport('claude-relay-security-%DATE%.log', 'warn')],
+  transports: [createRotateTransport('claude_plus-security-%DATE%.log', 'warn')],
   silent: false
 })
 
@@ -197,7 +197,7 @@ const authDetailLogger = winston.createLogger({
       return `[${timestamp}] ${level.toUpperCase()}: ${message}\n${jsonData}\n${'='.repeat(80)}`
     })
   ),
-  transports: [createRotateTransport('claude-relay-auth-detail-%DATE%.log', 'info')],
+  transports: [createRotateTransport('claude_plus-auth-detail-%DATE%.log', 'info')],
   silent: false
 })
 

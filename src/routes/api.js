@@ -641,7 +641,7 @@ router.get('/health', async (req, res) => {
 
     res.status(healthStatus.healthy ? 200 : 503).json({
       status: healthStatus.healthy ? 'healthy' : 'unhealthy',
-      service: 'claude-relay-service',
+      service: 'claude_plus',
       version: '1.0.0',
       ...healthStatus
     })
@@ -649,7 +649,7 @@ router.get('/health', async (req, res) => {
     logger.error('❌ Health check error:', error)
     res.status(503).json({
       status: 'unhealthy',
-      service: 'claude-relay-service',
+      service: 'claude_plus',
       error: error.message,
       timestamp: new Date().toISOString()
     })

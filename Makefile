@@ -202,7 +202,7 @@ production-build: clean install install-web build-web
 # 维护命令
 backup-redis:
 	@echo "💾 备份 Redis 数据..."
-	@docker exec claude-relay-service-redis-1 redis-cli BGSAVE || echo "❌ Redis 备份失败"
+	@docker exec claude_plus-redis-1 redis-cli BGSAVE || echo "❌ Redis 备份失败"
 
 restore-redis:
 	@echo "♻️  恢复 Redis 数据..."
@@ -216,7 +216,7 @@ monitor:
 
 tail-logs:
 	@echo "📋 实时查看日志..."
-	tail -f logs/claude-relay-*.log
+	tail -f logs/claude_plus-*.log
 
 # 开发工具
 format:
