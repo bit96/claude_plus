@@ -1,0 +1,31 @@
+# Claude模型映射自动化脚本的Crontab配置示例
+# 每10分钟执行一次，将Opus 4.1请求自动转换为Sonnet 4（成本控制）
+
+# 方式1：标准配置（推荐）
+# 每10分钟执行，输出重定向到日志文件
+*/10 * * * * cd /path/to/claude_plus && /usr/bin/node scripts/model-mapping/update-opus-to-sonnet.js >> logs/model-mapping.log 2>&1
+
+# 方式2：静默执行（无日志输出）
+# 只在出错时记录错误日志
+*/10 * * * * cd /path/to/claude_plus && /usr/bin/node scripts/model-mapping/update-opus-to-sonnet.js 2>> logs/model-mapping-error.log
+
+# 方式3：详细日志（开发调试用）
+# 记录成功和错误的详细信息，按日期分割日志
+*/10 * * * * cd /path/to/claude_plus && /usr/bin/node scripts/model-mapping/update-opus-to-sonnet.js >> logs/model-mapping-$(date +\%Y-\%m-\%d).log 2>&1
+
+# 安装方法：
+# 1. 编辑crontab：crontab -e
+# 2. 添加以上配置行之一（根据需求选择）
+# 3. 保存并退出编辑器
+# 4. 确认任务已添加：crontab -l
+
+# 重要提示：
+# - 将 /path/to/claude_plus 替换为实际的项目路径
+# - 确保 /usr/bin/node 是正确的Node.js路径（可用 which node 查看）
+# - 确保 logs 目录存在且有写权限
+# - 建议先手动运行脚本测试无误后再设置定时任务
+
+# 性能说明：
+# - 脚本执行时间通常 < 5秒
+# - 内存占用极小
+# - 10分钟频率对系统负载影响微乎其微

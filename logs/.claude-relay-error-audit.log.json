@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": false,
+        "amount": 5
+    },
+    "auditLog": "/Users/abc/PycharmProjects/claude_plus/logs/.claude-relay-error-audit.log.json",
+    "files": [
+        {
+            "date": 1757422140379,
+            "name": "/Users/abc/PycharmProjects/claude_plus/logs/claude-relay-error-2025-09-09.log",
+            "hash": "b19dadfd3307d82c3e58ab96a15f691174305fd8378c40e5ad3409081f635d03"
+        }
+    ],
+    "hashType": "sha256"
+}
